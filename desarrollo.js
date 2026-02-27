@@ -40,4 +40,30 @@ const infoMounstros = await extraerDatosMounstros(mounstrosUrl);
 console.log(infoMounstros);
        
 
+const mounstrosNorm = infoMounstros.map(m => 
+    {
+    return{
+     index:m.index,
+     name:m.name,
+     size:m.size,
+     type:m.type,
+     alignment:m.alignment,
+     cr:m.challenge_rating,
+     ac: m.armor_class?.[0]?.value ,
+     hp:m.hit_points,
+     speed:m.speed,
+     stats: {
+        str: m.strength,
+        dex: m.dexterity,
+        con: m.constitution,
+        int: m.intelligence,
+        wis: m.wisdom,
+        cha: m.charisma
+    },
+        immuneCount: immunities.length,
+        resistCount: resistances.length,
+        vulnCount: vulnerabilities.length
+    };
+});
 
+console.log(mounstrosNorm);
